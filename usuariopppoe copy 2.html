@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es" class="bg-background">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>infRadius Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  /* Colores similares a tu theme */
+  .bg-background { background-color: #f8fafc; }
+  .bg-card { background-color: #ffffff; }
+  .text-foreground { color: #1f2937; }
+  .text-muted-foreground { color: #6b7280; }
+  .border-border { border-color: #e5e7eb; }
+</style>
+</head>
+<body class="flex h-screen">
+
+  <!-- Sidebar -->
+  <aside class="fixed inset-y-0 left-0 w-64 bg-[#445C73] text-white flex flex-col">
+    <div class="p-6 border-b border-white/10">
+      <h2 class="text-xl font-bold">infRadius</h2>
+      <p class="text-sm text-gray-200 mt-1">Sistema de gestión FreeRADIUS</p>
+    </div>
+    <nav class="flex-1 px-4 py-6 space-y-1">
+    <a href="/dashboard.html" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+      </svg>
+      <span>Dashboard</span>
+    </a>
+    <a href="#" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+      </svg>
+      <span>Usuarios PPPoE</span>
+    </a>
+      <button class="w-full flex items-center px-4 py-3 rounded-lg hover:bg-white/10">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+</svg>
+
+        NAS / Routers
+      </button>
+      <button class="w-full flex items-center px-4 py-3 rounded-lg hover:bg-white/10">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+</svg>
+
+        Planes / Grupos
+      </button>
+    </nav>
+    <div class="p-4 border-t border-white/10">
+  <a href="/manual.pdf" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="h-5 w-5">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+    </svg>
+    <span>Manual de Usuario</span>
+  </a>
+    </div>
+  </aside>
+
+  <!-- Contenido principal -->
+  <div class="flex-1 flex flex-col ml-64">
+
+    <!-- Header -->
+    <header class="border-b border-border bg-card p-4 flex items-center justify-between">
+      <h1 class="text-lg text-foreground">Dashboard</h1>
+      <div class="flex items-center gap-3">
+        <!-- Dark Mode -->
+        <button class="px-3 py-2 rounded bg-gray-200 text-gray-700">Modo Oscuro</button>
+        <!-- Refresh -->
+        <button class="px-3 py-2 rounded bg-gray-200 text-gray-700">Actualizar</button>
+        <!-- Perfil -->
+        <div class="relative">
+          <button class="px-3 py-2 rounded bg-gray-200 text-gray-700">Juan Pérez</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Cards -->
+    <main class="flex-1 p-6 overflow-auto space-y-6">
+        <!-- Contenido principal actualizado -->
+<main class="flex-1 p-6 overflow-auto space-y-6">
+  <div class="bg-card rounded-xl shadow p-4">
+    <h2 class="text-lg font-semibold mb-4">Gestión de Usuarios PPPoE</h2>
+
+    <!-- Barra de búsqueda -->
+    <div class="mb-4 relative">
+      <input type="text" id="searchInput" placeholder="Buscar por usuario o IP..." class="w-full border rounded px-3 py-2 pl-10">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4 absolute left-3 top-3 text-gray-400">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+      </svg>
+    </div>
+
+    <!-- Tabla de usuarios -->
+    <div class="overflow-x-auto border rounded">
+      <table class="w-full text-left border-collapse">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-2 border"><input type="checkbox" id="selectAll"></th>
+            <th class="p-2 border">Usuario PPPoE</th>
+            <th class="p-2 border">Contraseña PPPoE</th>
+            <th class="p-2 border">Plan</th>
+            <th class="p-2 border">Router</th>
+            <th class="p-2 border">Estado</th>
+            <th class="p-2 border text-right">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="usersTableBody">
+          <!-- Filas generadas con JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-2 text-sm text-gray-500" id="userCount">Mostrando 0 usuarios</p>
+  </div>
+</main>
+
+<script>
+const users = [
+  { id: 1, username: 'cliente001', pppoePassword: 'ppp001@secure', plan: 'Plan Básico 10MB', router: 'MikroTik-01', status: 'Activo', ipAddress: '192.168.1.100', lastConnection: '2024-12-01 10:30' },
+  { id: 2, username: 'cliente045', pppoePassword: 'ppp045@secure', plan: 'Plan Premium 50MB', router: 'MikroTik-03', status: 'Inactivo', ipAddress: '192.168.1.145', lastConnection: '2024-11-30 18:45' },
+  { id: 3, username: 'cliente078', pppoePassword: 'ppp078@secure', plan: 'Plan Estándar 25MB', router: 'MikroTik-01', status: 'Activo', ipAddress: '192.168.1.178', lastConnection: '2024-12-01 09:15' }
+];
+
+function renderTable(filter='') {
+  const tbody = document.getElementById('usersTableBody');
+  tbody.innerHTML = '';
+  const filtered = users.filter(u => u.username.includes(filter) || u.ipAddress.includes(filter));
+  filtered.forEach(u => {
+    const tr = document.createElement('tr');
+    tr.className = 'border-b';
+    tr.innerHTML = `
+      <td class="p-2 border text-center"><input type="checkbox" class="rowCheckbox" data-id="${u.id}"></td>
+      <td class="p-2 border">${u.username}</td>
+      <td class="p-2 border"><code>••••••••</code></td>
+      <td class="p-2 border">${u.plan}</td>
+      <td class="p-2 border">${u.router}</td>
+      <td class="p-2 border">
+        <span class="${u.status==='Activo'?'bg-green-100 text-green-800':'bg-red-100 text-red-800'} px-2 py-1 rounded text-xs">${u.status}</span>
+      </td>
+      <td class="p-2 border text-right">
+        <button onclick="toggleStatus(${u.id})" class="px-2 py-1 border rounded text-sm">${u.status==='Activo'?'Desactivar':'Activar'}</button>
+        <button onclick="deleteUser(${u.id})" class="px-2 py-1 border rounded text-sm text-red-600">Eliminar</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('userCount').innerText = `Mostrando ${filtered.length} de ${users.length} usuarios`;
+}
+
+function toggleStatus(id) {
+  const u = users.find(u => u.id===id);
+  if(u) {
+    u.status = u.status==='Activo'?'Inactivo':'Activo';
+    renderTable(document.getElementById('searchInput').value);
+  }
+}
+
+function deleteUser(id) {
+  if(confirm('¿Eliminar usuario?')) {
+    const idx = users.findIndex(u => u.id===id);
+    if(idx>=0) users.splice(idx,1);
+    renderTable(document.getElementById('searchInput').value);
+  }
+}
+
+// Buscar
+document.getElementById('searchInput').addEventListener('input', e=>{
+  renderTable(e.target.value);
+});
+
+// Select all
+document.getElementById('selectAll').addEventListener('change', e=>{
+  document.querySelectorAll('.rowCheckbox').forEach(cb=>{
+    cb.checked = e.target.checked;
+  });
+});
+
+renderTable();
+</script>
+
+
+    </main>
+  </div>
+
+</body>
+</html>
