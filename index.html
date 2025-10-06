@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - infRadius</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-[#445C73] p-6">
+
+  <div class="w-full max-w-5xl bg-white rounded-xl shadow-2xl overflow-hidden grid lg:grid-cols-5 min-h-[500px]">
+
+    <!-- Columna izquierda: imagen -->
+    <div class="hidden lg:block lg:col-span-3 relative">
+      <img src="https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZXJ2ZXIlMjByb29tJTIwdGVjaG5vbG9neSUyMG1vZGVybnxlbnwxfHx8fDE3NTkzNDkwMjh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-gray-900/40"></div>
+
+      <!-- Logo -->
+      <div class="absolute bottom-8 left-8 flex items-center gap-3 text-white">
+        <div class="p-3 rounded-full bg-[#F27D16]">
+          <!-- Icono WiFi -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12.5l4 4 4-4M12 16V8" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-2xl font-bold">infRadius</h1>
+          <p class="text-sm text-gray-200">Sistema de gestión FreeRADIUS</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna derecha: formulario -->
+    <div class="lg:col-span-2 flex flex-col justify-center p-8 lg:p-12">
+
+      <div class="mb-8 text-center lg:text-left">
+        <h2 class="text-2xl font-bold text-black mb-2">Iniciar Sesión</h2>
+        <p class="text-gray-500 text-sm">Accede al sistema de gestión</p>
+      </div>
+
+      <form class="space-y-6">
+
+        <!-- Usuario -->
+        <div class="space-y-2">
+          <label for="username" class="block text-sm font-medium text-gray-700">Usuario</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A6 6 0 0112 14a6 6 0 016.879 3.804M12 12a4 4 0 100-8 4 4 0 000 8z" />
+              </svg>
+            </span>
+            <input type="text" id="username" placeholder="Ingresa tu usuario" class="pl-10 pr-3 h-12 w-full rounded-lg border border-gray-300 bg-gray-100 focus:border-[#F27D16] focus:ring-[#F27D16] outline-none">
+          </div>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="space-y-2">
+          <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c1.657 0 3 1.343 3 3v3H9v-3c0-1.657 1.343-3 3-3z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 11V7a5 5 0 10-10 0v4" />
+              </svg>
+            </span>
+            <input type="password" id="password" placeholder="Ingresa tu contraseña" class="pl-10 pr-10 h-12 w-full rounded-lg border border-gray-300 bg-gray-100 focus:border-[#F27D16] focus:ring-[#F27D16] outline-none">
+            <!-- Botón mostrar/ocultar contraseña -->
+            <button type="button" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600" onclick="togglePassword()">
+              <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+              <svg id="eyeClosed" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.958 9.958 0 011.769-3.063M6.27 6.27A9.958 9.958 0 0112 5c4.477 0 8.268 2.943 9.542 7a9.96 9.96 0 01-1.562 2.507M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Botón login -->
+        <button type="submit"  class="w-full h-12 bg-[#F27D16] text-white font-medium rounded-lg hover:bg-[#e06610] transition-all">
+          Iniciar Sesión
+        </button>
+      </form>
+
+    </div>
+
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passInput = document.getElementById('password');
+      const eyeOpen = document.getElementById('eyeOpen');
+      const eyeClosed = document.getElementById('eyeClosed');
+      if(passInput.type === 'password') {
+        passInput.type = 'text';
+        eyeOpen.classList.add('hidden');
+        eyeClosed.classList.remove('hidden');
+      } else {
+        passInput.type = 'password';
+        eyeOpen.classList.remove('hidden');
+        eyeClosed.classList.add('hidden');
+      }
+    }
+  </script>
+
+</body>
+</html>

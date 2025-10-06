@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es" class="bg-background">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>infRadius Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  /* Colores similares a tu theme */
+  .bg-background { background-color: #f8fafc; }
+  .bg-card { background-color: #ffffff; }
+  .text-foreground { color: #1f2937; }
+  .text-muted-foreground { color: #6b7280; }
+  .border-border { border-color: #e5e7eb; }
+</style>
+</head>
+<body class="flex h-screen">
+
+  <!-- Sidebar -->
+  <aside class="fixed inset-y-0 left-0 w-64 bg-[#445C73] text-white flex flex-col">
+    <div class="p-6 border-b border-white/10">
+      <h2 class="text-xl font-bold">infRadius</h2>
+      <p class="text-sm text-gray-200 mt-1">Sistema de gestión FreeRADIUS</p>
+    </div>
+    <nav class="flex-1 px-4 py-6 space-y-1">
+      <button class="w-full flex items-center px-4 py-3 rounded-lg hover:bg-white/10">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+        </svg>
+
+        Dashboard
+      </button>
+      <button class="w-full flex items-center px-4 py-3 rounded-lg hover:bg-white/10">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+    </svg>
+
+        Usuarios PPPoE
+      </button>
+      <button class="w-full flex items-center px-4 py-3 rounded-lg hover:bg-white/10">
+        <svg class="h-5 w-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M4 4h16v16H4z"></path>
+        </svg>
+        NAS / Routers
+      </button>
+      <button class="w-full flex items-center px-4 py-3 rounded-lg hover:bg-white/10">
+        <svg class="h-5 w-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 8v4l3 3"></path>
+        </svg>
+        Planes / Grupos
+      </button>
+    </nav>
+    <div class="p-4 border-t border-white/10">
+      <button class="w-full flex items-center px-4 py-3 rounded-lg hover:bg-white/10">
+        <svg class="h-5 w-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M4 4h16v16H4z"></path>
+        </svg>
+        Manual de Usuario
+      </button>
+    </div>
+  </aside>
+
+  <!-- Contenido principal -->
+  <div class="flex-1 flex flex-col ml-64">
+
+    <!-- Header -->
+    <header class="border-b border-border bg-card p-4 flex items-center justify-between">
+      <h1 class="text-lg text-foreground">Dashboard</h1>
+      <div class="flex items-center gap-3">
+        <!-- Dark Mode -->
+        <button class="px-3 py-2 rounded bg-gray-200 text-gray-700">Modo Oscuro</button>
+        <!-- Refresh -->
+        <button class="px-3 py-2 rounded bg-gray-200 text-gray-700">Actualizar</button>
+        <!-- Perfil -->
+        <div class="relative">
+          <button class="px-3 py-2 rounded bg-gray-200 text-gray-700">Juan Pérez</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Cards -->
+    <main class="flex-1 p-6 overflow-auto space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <!-- Clientes Activos -->
+        <div class="bg-gradient-to-br from-orange-50 to-orange-100 shadow rounded-xl p-4 flex justify-between items-center">
+          <div>
+            <p class="text-sm text-muted-foreground mb-1">Clientes Activos</p>
+            <p class="text-3xl font-bold text-foreground">1247</p>
+          </div>
+          <div class="bg-white/50 rounded-full p-3">
+            <svg class="h-8 w-8 text-orange-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M17 20h5v-2a4 4 0 00-3-3.87"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Routers Activos -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 shadow rounded-xl p-4 flex justify-between items-center">
+          <div>
+            <p class="text-sm text-muted-foreground mb-1">Routers Activos</p>
+            <p class="text-3xl font-bold text-foreground">3 / 4</p>
+          </div>
+          <div class="bg-white/50 rounded-full p-3">
+            <svg class="h-8 w-8 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Total de Planes -->
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 shadow rounded-xl p-4 flex justify-between items-center">
+          <div>
+            <p class="text-sm text-muted-foreground mb-1">Total de Planes</p>
+            <p class="text-3xl font-bold text-foreground">4</p>
+          </div>
+          <div class="bg-white/50 rounded-full p-3">
+            <svg class="h-8 w-8 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 3h18v18H3z"></path>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Gráficos -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-card rounded-xl p-4 shadow">
+          <h3 class="text-lg font-semibold mb-2 flex items-center gap-2">
+            <svg class="h-5 w-5 text-orange-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 3l18 18M3 21l18-18"></path>
+            </svg>
+            Evolución de Usuarios
+          </h3>
+          <div class="h-64 bg-gray-100 rounded"></div>
+        </div>
+
+        <div class="bg-card rounded-xl p-4 shadow">
+          <h3 class="text-lg font-semibold mb-2 flex items-center gap-2">
+            <svg class="h-5 w-5 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 3h18v18H3z"></path>
+            </svg>
+            Distribución de Planes
+          </h3>
+          <div class="h-64 bg-gray-100 rounded"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>
