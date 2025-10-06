@@ -86,23 +86,5 @@
     </div>
 
   </div>
-
-  <script>
-    function togglePassword() {
-      const passInput = document.getElementById('password');
-      const eyeOpen = document.getElementById('eyeOpen');
-      const eyeClosed = document.getElementById('eyeClosed');
-      if(passInput.type === 'password') {
-        passInput.type = 'text';
-        eyeOpen.classList.add('hidden');
-        eyeClosed.classList.remove('hidden');
-      } else {
-        passInput.type = 'password';
-        eyeOpen.classList.remove('hidden');
-        eyeClosed.classList.add('hidden');
-      }
-    }
-  </script>
-
 </body>
 </html>
